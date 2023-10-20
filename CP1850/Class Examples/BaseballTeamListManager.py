@@ -68,31 +68,28 @@ def displayLineup(players: list):
             largeTab = 1
             smallTab = 2
             
-        if player[3] / player[2] == 1.0:
-            avg = "1.0"
-        else:
-            avg = str(round((player[3] / player[2]),3)).rstrip('0')
+        if player[3] / player[2] == 1.0: avg = "1.0"
+        else: avg = str(round((player[3] / player[2]),3)).rstrip('0')
+        
         print("%d %s%s %s%s %s%d %s%d %s%s" % (i + 1, smallTab*"\t", player[0], largeTab*"\t", player[1], smallTab*"\t", player[2], smallTab*"\t", player[3], smallTab*"\t",  avg))
     print()   
             
 def addPlayer(positions: list, players: list):
+    name = input("Name: ")
+    if len(name) > 14:
+        name = name[:14]
+
     while True:
-        name = input("Name: ")
-        if len(name) < 15:
-            while True:
-                position = input("Position: ")
-                if positions.count(position) == 1:
-                    atBats = getAtBats()
-                    hits = getHits()
-                    players.append([name, position, atBats, hits])
-                    print("%s was added.\n" % name)
-                    break
-                else:
-                    print("Invalid position. Try again.")
-                    printPositions(positions)
+        position = input("Position: ")
+        if positions.count(position) == 1:
+            atBats = getAtBats()
+            hits = getHits()
+            players.append([name, position, atBats, hits])
+            print("%s was added.\n" % name)
             break
         else:
-            print("Max name length of 14")
+            print("Invalid position. Try again.")
+            printPositions(positions)
     
 def removePlayer(players: list):
     lineupNum = getLineupNumber(players, "Lineup number: ")
@@ -166,4 +163,3 @@ def main():
     
 if __name__ == "__main__":
     main()
-  
