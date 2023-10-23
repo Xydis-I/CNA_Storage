@@ -67,19 +67,27 @@ def displayLineup(players: list):
         else:
             largeTab = 1
             
-        if player[3] / player[2] == 1.0: avg = "1.0"
-        else: avg = str(round((player[3] / player[2]),3)).rstrip('0')
+        if player[3] / player[2] == 1.0:
+            avg = "1.0"
+        else:
+            avg = str(round((player[3] / player[2]),3)).rstrip('0')
         
         print("%d \t\t%s %s%s \t\t%d \t\t%d \t\t%s" % (i + 1, player[0], largeTab*"\t", player[1], player[2], player[3], avg))
     print()   
             
 def addPlayer(positions: list, players: list):
-    name = input("Name: ")
+    while True:
+        name = input("Name: ")
+        if name.isalnum():
+            break
+        else:
+            print("Enter valid name.")
+    
     if len(name) > 14:
         name = name[:14]
 
     while True:
-        position = input("Position: ")
+        position = input("Position: ").upper()
         if positions.count(position) == 1:
             atBats = getAtBats()
             hits = getHits()
