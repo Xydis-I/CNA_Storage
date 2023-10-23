@@ -58,20 +58,19 @@ def getHits() -> int:
 def displayLineup(players: list):
     print("\t\tPlayer\t\t\tPOS\t\tAB\t\tH\t\tAVG\n" + (63 * "-"))
     for i, player in enumerate(players):
-        if len(player[0]) < 6:
+        if len(player[0]) < 3:
+            largeTab = 4
+        elif len(player[0]) < 6:
             largeTab = 3
-            smallTab = 2
         elif len(player[0]) < 11:
             largeTab = 2
-            smallTab = 2
         else:
             largeTab = 1
-            smallTab = 2
             
         if player[3] / player[2] == 1.0: avg = "1.0"
         else: avg = str(round((player[3] / player[2]),3)).rstrip('0')
         
-        print("%d %s%s %s%s %s%d %s%d %s%s" % (i + 1, smallTab*"\t", player[0], largeTab*"\t", player[1], smallTab*"\t", player[2], smallTab*"\t", player[3], smallTab*"\t",  avg))
+        print("%d \t\t%s %s%s \t\t%d \t\t%d \t\t%s" % (i + 1, player[0], largeTab*"\t", player[1], player[2], player[3], avg))
     print()   
             
 def addPlayer(positions: list, players: list):
