@@ -1,5 +1,6 @@
+# -*- coding: utf-8 -*-
 """
-@Author: C. C. Barrett
+Author: C. C. Barrett
 """
 from random import randint
 
