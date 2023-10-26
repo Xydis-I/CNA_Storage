@@ -1,16 +1,18 @@
 # -*- coding: utf-8 -*-
 """
-@Author: C. C. Barrett
+@Author: christian.barrett
 """
 
-from math import trunc
 from random import randint
 
 tupleData = (0, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50)
 randomData = [randint(0, 50) for x in range(0, 12)]
 
 def median(items:tuple) -> int:
-    return sorted(items)[trunc(len(items)/2)]
+    if len(items) % 2 == 0:
+        return (sorted(items)[int(len(items)/2)-1] + sorted(items)[int(len(items)/2)])/2
+    else:
+        return sorted(items)[int(len(items)/2)-1]
     
 def listInfo(listData: list):
     return ("Average = %d Median = %d Min = %d Max = %d Dups = " % (sum(listData)/len(listData), median(listData), min(listData), max(listData)) + str(duplicates(listData)))
