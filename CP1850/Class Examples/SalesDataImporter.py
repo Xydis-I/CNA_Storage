@@ -16,7 +16,7 @@ def displayMenu() -> str:
 def commandMenu(salesData:list):
     print(displayMenu())
     while True:
-        command = input("\nPlease enter a command: ")
+        command = input("\nPlease enter a command: ").lower()
         if command == "view":
             view(salesData)
         elif command == "add":
