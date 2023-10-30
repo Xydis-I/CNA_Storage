@@ -27,8 +27,7 @@ def commandMenu(salesData:list):
             print("\nBye!")
             break
         else:
-            print("Invalid command. Please try again.\n" + displayMenu())
-            
+            print("Invalid command. Please try again.\n" + displayMenu())            
     
     
 def view(salesData:list):
